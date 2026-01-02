@@ -1,0 +1,63 @@
+
+sources:
+  - name: demo_src
+    description: Данные из БД авиоперелетов 2
+    database: dwh_flights
+    schema: demo_src
+    tables:
+      - name: boarding_passes
+        description: Посадочные талоны
+        columns:
+          - name: ticket_no
+            description: номер билета
+          - name: flight_id
+            description: айди полета
+          - name: boarding_no
+            description: номер рейса
+          - name: seat_no
+            description: номер места
+
+      - name: flights
+        description: Перелеты
+        config:
+          freshness: #проверка на свежесть 
+            warn_after: {count: 600000, period: hour}
+            error_after: {count: 10000, period: day}
+            filter: current_timestamp::date - actual_departure::date < 30000
+          loaded_at_field: actual_departure
+        columns:
+          - name: flight_id
+          - name: flight_no
+          - name: scheduled_departure
+          - name: scheduled_arrival
+          - name: departure_airport
+          - name: arrival_airport
+          - name: status
+          - name: aircraft_code
+          - name: actual_departure
+          - name: actual_arrival
+
+        
+
+      - name: ticket_flights
+        description: билеты
+        columns:
+          - name: ticket_no
+          - name: flight_id
+          - name: fare_conditions
+          - name: amount
+
+      - name: tickets
+        description: пасссажирские билеты
+        columns:
+          - name: ticket_no
+          - name: book_ref
+          - name: passenger_id
+          - name: passenger_name
+          - name: contact_data
+
+
+
+
+
+
