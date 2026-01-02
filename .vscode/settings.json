@@ -1,0 +1,5 @@
+{
+  "python.defaultInterpreterPath": "/Users/maksbolomoznov/dbt_git_practice/.venv/bin/python",
+  "dbt.dbtPythonPath": "/Users/maksbolomoznov/dbt_git_practice/.venv/bin/python"
+}
+
