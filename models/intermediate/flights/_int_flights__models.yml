@@ -1,0 +1,42 @@
+models:
+  - name: fct_bookings
+    description: бронирование
+    columns:
+      - name: book_ref
+        description: реф
+      - name: book_date
+        description: дата брони
+      - name: total_amount
+        description: сумма брони
+
+  - name: fct_flights
+    description: Полеты
+    columns:
+      - name: flight_id
+      - name: flight_no
+      - name: scheduled_departure
+      - name: scheduled_arrival
+      - name: departure_airport
+      - name: arrival_airport
+      - name: status
+      - name: aircraft_code
+      - name: actual_departure
+      - name: actual_arrival
+
+  - name: fct_ticket_flights
+    description: билеты
+    columns:
+      - name: ticket_no
+      - name: flight_id
+      - name: fare_conditions
+      - name: amount
+
+  
+  - name: tickets
+    description: пасссажирские билеты
+    columns:
+      - name: ticket_no
+      - name: book_ref
+      - name: passenger_id
+      - name: passenger_name
+      - name: contact_data
