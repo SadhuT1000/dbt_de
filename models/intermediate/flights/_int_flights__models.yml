@@ -25,11 +25,30 @@ models:
 
   - name: fct_ticket_flights
     description: билеты
+    docs:
+        show: True
+        node_color: green
+    config:
+      contract: {enforced: true}
+    meta:
+      owner: "bolomozhnov@gmail.com"
+    
     columns:
       - name: ticket_no
+        data_type: bpchar(13)
+
       - name: flight_id
+        data_type: int4
+        constraints:
+          - type: not_null
       - name: fare_conditions
+        data_type: varchar(10)
       - name: amount
+        data_type: numeric(10,2)
+        constraints:
+          - type: check
+            expression: "amount > 0"
+
 
   
   - name: tickets
