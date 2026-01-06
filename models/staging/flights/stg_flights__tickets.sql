@@ -14,3 +14,4 @@ select
 
 from {{ source('demo_src', 'tickets') }}
 
+
