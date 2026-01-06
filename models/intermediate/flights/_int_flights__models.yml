@@ -25,10 +25,11 @@ models:
 
   - name: fct_ticket_flights
     description: билеты
-    docs:
-        show: True
-        node_color: green
     config:
+      docs:
+        show: True
+        node_color: "green"
+      
       contract: {enforced: true}
     meta:
       owner: "bolomozhnov@gmail.com"
