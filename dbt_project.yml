@@ -31,9 +31,16 @@ clean-targets:         # directories to be removed by `dbt clean`
 # files using the `{{ config(...) }}` macro.
 models:
   dbt_course_practice:
-    # Config indicated by + and applies to all files under models/example/
-    example:
-      +materialized: view
+    intermediate:
+      flights:
+        +meta:
+          owner: "dbt_project_yml@mail.com"
+          year_created: 2026
+      +tags:
+        - "intermediate"
+    staging:
+      +tags:
+        - "staging"
 
 seeds:
   dbt_course_practice:
