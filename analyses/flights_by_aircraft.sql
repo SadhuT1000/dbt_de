@@ -16,10 +16,13 @@ from {{ ref("fct_flights") }}
 
 {% endif %}
 
-select 
+select
+  
    {% for air in aircrafts_impotant -%}
-    sum(case when aircraft_code = '{{ air }}' then 1 else 0 end) as fligts_{{ air }}
+    sum(case when aircraft_code = '{{ air }}' then 1 else 0 end) as fligts_{{ air|title|replace('73', 'oo') }}
      {%- if not loop.last %}, {% endif %}
+     -- {{ loop.index }}
    {% endfor %}
+
 
 from {{ ref("fct_flights") }}
