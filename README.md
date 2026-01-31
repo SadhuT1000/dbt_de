@@ -16,3 +16,5 @@
 - jinja макросы эксперименты и замена кучи кода на более красивоЕ
 
 - run_started_at, current_date, в работе с jinja
+
+- post_hook, pre_hook, работа с adapter и его методами , интересноЕ
