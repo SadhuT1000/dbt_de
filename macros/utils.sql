@@ -74,3 +74,34 @@ FROM MODELS_TO_DROP
 
 
 {% endmacro %}
+
+
+
+
+
+{% macro show_columns_relation(table_name) %}
+
+{% if execute %}
+    {# Проверяем таблицу #}
+    {% set exists = adapter.get_relation(
+        database=target.database,
+        schema=target.schema,
+        identifier=table_name
+    ) %}
+    {% do log(exists, True) %}
+
+    {%- if exists -%}
+        {%- set cols = run_query(
+            "SELECT COLUMN_NAME FROM "
+            ~ target.database ~ ".INFORMATION_SCHEMA.COLUMNS "
+            ~ "WHERE TABLE_SCHEMA = '" ~ target.schema ~ "' "
+            ~ "AND TABLE_NAME = '" ~ table_name ~ "'"
+        ).columns[0].values() -%}
+        {{ cols | join(', ') }}
+    {%- else -%}
+        {{ log("Table '" ~ table_name ~ "' does not exist", True) }}
+    {%- endif -%}
+
+{% endif %}
+
+{% endmacro %}
