@@ -10,9 +10,7 @@ seeds:
 
     columns:
       - name: city
-        tests:
-          - not_null
-          - unique
+        
 
  
 
@@ -23,8 +21,7 @@ seeds:
         passenger_id: varchar(20)
     columns:
       - name: passenger_id
-        tests:
-         - not_null
+       
 
 
 

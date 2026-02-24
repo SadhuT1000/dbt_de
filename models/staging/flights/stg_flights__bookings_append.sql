@@ -5,6 +5,7 @@
             materialized = 'incremental',
             incremental_strategy = 'append',
             tags = ['bookings']
+            
             )
 }}
 

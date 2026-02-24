@@ -3,7 +3,7 @@
           config(
             materialized = 'incremental',
             incremental_strategy = 'merge',
-            unique_key = ['flight_id'],
+            unique_key = ['flight_id']
             )
 }}
 
@@ -34,7 +34,7 @@ where
 
 
 
-{% for col in adapter.get_columns_in_relation(flights_) %}
+{#{% for col in adapter.get_columns_in_relation(flights_) %}
   {{ 'Column:' ~col }}
 {% endfor %}
 
