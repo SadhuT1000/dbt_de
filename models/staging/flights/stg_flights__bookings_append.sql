@@ -12,7 +12,7 @@ select
   {{ bookref_to_bigint('book_ref') }} as book_ref,
 
   book_date,
-  {{ koperk_to_ruble('total_amount') }} as total_amount
+  {{ koperk_to_ruble('total_amount', -2) }} as total_amount
   
 
 from {{ source('demo_src', 'bookings') }}
@@ -23,4 +23,17 @@ from {{ source('demo_src', 'bookings') }}
 
 {% endif %} #}
 
-    
+{% if execute %}
+
+-- {{ graph.nodes.values() }}
+
+{% for node in graph.nodes.values() %}
+  {% if node.resource_type == 'model' %}
+  -- {{ node.name }}
+  -- -----------
+  -- {{ node }}
+  {% endif %}
+{% endfor %}
+
+
+{% endif %}
